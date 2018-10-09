@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5b0b0b"
-    tools:context=".MainActivity">
+    tools:context=".presentation.login.LoginFragment">
 
     <View
         android:id="@+id/viewStub"
