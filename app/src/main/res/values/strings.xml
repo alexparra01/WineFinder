@@ -10,4 +10,5 @@
     <string name="ConfirmUser">Please confirm your user</string>
     <string name="ValidUserName">This is not a valid email</string>
     <string name="ValidPassword">This is not a valida Password</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

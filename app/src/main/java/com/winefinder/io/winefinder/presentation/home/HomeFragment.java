@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.winefinder.io.winefinder.R;
+import com.winefinder.io.winefinder.presentation.Main.MainActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -22,7 +24,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment, container, false);
+       View view =inflater.inflate(R.layout.home_fragment, container, false);
+
+        ((MainActivity) getActivity()).bottomNavigationView.setVisibility(View.VISIBLE);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
+       return view;
     }
 
     @Override

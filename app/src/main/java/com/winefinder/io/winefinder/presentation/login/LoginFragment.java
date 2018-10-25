@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.winefinder.io.winefinder.R;
 import com.winefinder.io.winefinder.WineApplication;
+import com.winefinder.io.winefinder.presentation.Main.MainActivity;
 import com.winefinder.io.winefinder.presentation.home.HomeFragment;
 
 import java.util.Objects;
@@ -50,6 +52,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Fir
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         usernameEditText = view.findViewById(R.id.username);
         passwordEditTex = view.findViewById(R.id.password);
@@ -127,6 +131,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Fir
                         if(!task.isSuccessful()){
                             Snackbar.make(Objects.requireNonNull(getView()),task.getException().getMessage(),Snackbar.LENGTH_LONG)
                                     .show();
+                        }else{
+
+                            LoginFragment loginFragment = new LoginFragment();
+
+                            getFragmentManager().beginTransaction()
+                                    .remove(loginFragment).commit();
+
+                            HomeFragment homeFragment = new HomeFragment();
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.loginContainer,homeFragment).commitAllowingStateLoss();
+                            getFragmentManager().beginTransaction().addToBackStack(null);
                         }
                     });
         }

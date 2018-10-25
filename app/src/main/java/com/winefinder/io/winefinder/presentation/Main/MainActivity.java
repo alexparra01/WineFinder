@@ -20,13 +20,15 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     FirebaseAuth auth;
 
+    public BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         ((WineApplication) getApplication()).getAppComponent().inject(this);
 

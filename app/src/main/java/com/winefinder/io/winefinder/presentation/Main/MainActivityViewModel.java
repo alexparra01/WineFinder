@@ -26,7 +26,7 @@ public class MainActivityViewModel extends ViewModel {
             LoginFragment loginFragment = new LoginFragment();
 
             fragmentManager.beginTransaction()
-                    .add(R.id.fragmentContainer,loginFragment).commit();
+                    .add(R.id.loginContainer,loginFragment).commit();
             return false;
         }
     }
